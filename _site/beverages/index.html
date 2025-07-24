@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutriish Beverage Guide | Sugar-Free & Healthy Drink Recipes</title>
+  <meta name="description" content="Cutting back on soda? Discover Nutriish's favorite sugar-free, healthy, and refreshing drink recipes. Tap to get delicious alternatives to soda and juice." />
+  <meta name="keywords" content="healthy drinks, sugar-free drinks, beverage guide, Nutriish, no soda, sparkling water, iced tea, infused water, low-calorie drinks, easy recipes" />
+  <meta name="author" content="Nutriish" />
+  <meta property="og:title" content="Nutriish Beverage Guide | Sugar-Free & Healthy Drink Recipes" />
+  <meta property="og:description" content="Swap your soda for something better! Explore Nutriish's guide to delicious, sugar-free, and healthy homemade drinks. Perfect for busy families and professionals." />
+  <meta property="og:image" content="Nutriish_logo.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="Nutriish_logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <style>
+    *, *:before, *:after { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .header-img-wrap {
+      width: 100vw;
+      height: 160px;
+      background: url('image_background.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .logo-centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      z-index: 2;
+      max-width: 95px;
+      max-height: 95px;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    nav {
+      width: 100%;
+      padding: 1rem 0 0.5rem 0;
+      text-align: center;
+      background: none;
+    }
+    nav a {
+      color: #31917b;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.08rem;
+      transition: color 0.18s;
+    }
+    nav a:hover {
+      color: #1b6254;
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 2rem 0 0.7rem 0;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .header-img-wrap { height: 140px; }
+      .logo-centered { max-width: 75px; max-height: 75px; }
+    }
+    .flip-card {
+      background: transparent;
+      width: 100%;
+      height: 260px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.55s cubic-bezier(.5,1.7,.65,1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    .flip-card-front img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 14px 14px 0 0;
+    }
+    .flip-card-front .card-content {
+      padding: 1.1rem 1rem 1.2rem 1rem;
+      min-height: 85px;
+    }
+    .drink-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #31917b;
+      display: flex;
+      align-items: center;
+    }
+    .drink-icon {
+      font-size: 1.45rem;
+      margin-right: 0.5rem;
+    }
+    .drink-desc {
+      font-size: 0.99rem;
+      color: #555;
+    }
+    .flip-card-back {
+      background: #254b3d;
+      color: #fff;
+      transform: rotateY(180deg);
+      text-align: center;
+      padding: 1.7rem 1.1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .flip-card-back strong {
+      font-size: 1.12rem;
+      letter-spacing: 0.02em;
+    }
+    .flip-card-back ul {
+      margin: 0.8em 0 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .flip-card-back li {
+      margin-bottom: 2px;
+    }
+    .flip-card-back .back-title {
+      font-size: 1.08rem;
+      margin-bottom: 0.5rem;
+      color: #c2fae0;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+    }
+    .footer {
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.98rem;
+      background: #eee;
+      margin-top: 2rem;
+    }
+    .tap-tip {
+      font-size: 0.98rem;
+      color: #3b7368;
+      margin-bottom: 2.1rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-img-wrap">
+    <a href="index.html">
+      <img src="Nutriish_logo.png" alt="Nutriish Logo" class="logo-centered">
+    </a>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="beverages.html" style="font-weight: bold;">Beverage Guide</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="news.html">News</a>
+  </nav>
+  <h1>Drink Better Guide</h1>
+  <section class="container">
+    <h2 style="text-align:center; font-size:1.7rem; margin-bottom: 0.7rem;">Healthy & Tasty Drinks</h2>
+    <p style="text-align:center; margin-bottom:1.2rem;">Cutting back on soda? Here are refreshing, sugar-free drink ideas. <br>Tap or click each card for the full recipe!</p>
+    <div class="grid">
+      <!-- CARD 1 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="lemonade-6668438_1280.jpg" alt="Citrus Mint Water">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">🍋</span>Citrus Mint Water</span>
+              <div class="drink-desc">A simple upgrade to plain water — cooling, refreshing, zero sugar.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Citrus Mint Water</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>12 oz cold water</li>
+              <li>2–3 cucumber slices</li>
+              <li>1 lemon wedge</li>
+              <li>3 mint leaves</li>
+            </ul>
+            <div style="margin-top:0.6em;font-size:0.97em;">Let infuse for 10+ min.</div>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 2 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="iced-tea-6391412_1280.jpg" alt="Berry Iced Tea">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">🫐</span>Berry Iced Tea</span>
+              <div class="drink-desc">Fruity, tangy, and totally refreshing without added sugar.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Berry Iced Tea</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>Brew 8 oz hibiscus tea, chill</li>
+              <li>Add 1/4 cup frozen berries</li>
+              <li>Lemon slice, serve on ice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 3 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="lemon-2610759_1280.jpg" alt="Ginger Citrus Sparkler">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">🫚</span>Ginger Citrus Sparkler</span>
+              <div class="drink-desc">Spicy and zingy, this one helps fight soda cravings.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Ginger Citrus Sparkler</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>4 oz orange juice</li>
+              <li>8 oz sparkling water</li>
+              <li>Splash of lemon juice</li>
+              <li>1 tsp grated ginger</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 4 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="smoothie-ingredients-glasses.jpg" alt="Cucumber Lime Cooler">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">🥒</span>Cucumber Lime Cooler</span>
+              <div class="drink-desc">Ultra-refreshing and perfect for hot days.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Cucumber Lime Cooler</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>8 oz sparkling water</li>
+              <li>Juice of 1/2 lime</li>
+              <li>2 cucumber slices</li>
+              <li>Optional mint sprig</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 5 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="brooke-lark-t7wg7BJU2-s-unsplash.jpg" alt="Grapefruit Refresher">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">🍊</span>Grapefruit Refresher</span>
+              <div class="drink-desc">Tart and vibrant. Bonus: great vitamin C boost.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Grapefruit Refresher</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>4 oz grapefruit juice</li>
+              <li>6 oz cold water</li>
+              <li>Pinch of sea salt</li>
+              <li>Squeeze of lime</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 6: Iced Coffee Latte -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="coffee-7074304_1280.jpg" alt="Iced Coffee Latte">
+            <div class="card-content">
+              <span class="drink-title"><span class="drink-icon">☕️</span>Iced Coffee Latte (Low-Cal)</span>
+              <div class="drink-desc">All the coffeehouse vibes, none of the sugar crash. Creamy, cold, and super light.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="back-title">Iced Coffee Latte</div>
+            <strong>Recipe</strong>
+            <ul>
+              <li>6 oz brewed coffee (chilled)</li>
+              <li>3 oz unsweetened almond milk (or low-fat milk)</li>
+              <li>Lots of ice</li>
+              <li>1–2 tsp sugar-free vanilla syrup</li>
+            </ul>
+            <div style="margin-top:0.6em;font-size:0.97em;">Pour over ice. Stir & enjoy. For a “frappé” effect, blend with ice!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tap-tip">Tip: Tap/click a card for the recipe. Tap again to flip back!</div>
+  </section>
+  <div class="footer">
+    &copy; 2025 Nutriish. All rights reserved.
+  </div>
+  <script>
+    // Flip effect for cards on click/tap
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Only flip if clicked outside of a link or button
+        if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+          this.classList.toggle('flipped');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

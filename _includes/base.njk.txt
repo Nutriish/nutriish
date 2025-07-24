@@ -9,6 +9,9 @@
 </head>
 <body>
   <header>
+    <a href="/" style="display:inline-block;">
+      <img src="/Nutriish_logo.png" alt="Nutriish logo" style="max-height:70px; margin-bottom:0.3em;" />
+    </a>
     <nav>
       <a href="/">Home</a>
       <a href="/beverages.html">Beverage Guide</a>
