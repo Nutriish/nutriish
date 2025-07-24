@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "eleventy --serve",
-  "build": "eleventy"
-}
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
