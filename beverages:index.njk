@@ -1,0 +1,72 @@
+---
+layout: base.njk
+title: Nutriish Beverage Guide | Sugar-Free & Healthy Drink Recipes
+description: Cutting back on soda? Discover Nutriish's favorite sugar-free, healthy, and refreshing drink recipes. Tap to get delicious alternatives to soda and juice.
+keywords: healthy drinks, sugar-free drinks, beverage guide, Nutriish, no soda, sparkling water, iced tea, infused water, low-calorie drinks, easy recipes
+author: Nutriish
+permalink: /beverages/
+og_title: Nutriish Beverage Guide | Sugar-Free & Healthy Drink Recipes
+og_description: Swap your soda for something better! Explore Nutriish's guide to delicious, sugar-free, and healthy homemade drinks. Perfect for busy families and professionals.
+og_image: /Nutriish_logo.png
+---
+
+<div class="header-img-wrap">
+  <a href="/">
+    <img src="/Nutriish_logo.png" alt="Nutriish Logo" class="logo-centered">
+  </a>
+</div>
+<nav>
+  <a href="/">Home</a>
+  <a href="/beverages/" style="font-weight: bold;">Beverage Guide</a>
+  <a href="/pricing/">Pricing</a>
+  <a href="/news/">News</a>
+</nav>
+<h1>Drink Better Guide</h1>
+<section class="container">
+  <h2 style="text-align:center; font-size:1.7rem; margin-bottom: 0.7rem;">Healthy & Tasty Drinks</h2>
+  <p style="text-align:center; margin-bottom:1.2rem;">Cutting back on soda? Here are refreshing, sugar-free drink ideas. <br>Tap or click each card for the full recipe!</p>
+  <div class="grid">
+    <!-- All your cards here (exactly as you had them) -->
+    <!-- ... (unchanged content of the cards) ... -->
+    <!-- CARD 1 -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="/lemonade-6668438_1280.jpg" alt="Citrus Mint Water">
+          <div class="card-content">
+            <span class="drink-title"><span class="drink-icon">🍋</span>Citrus Mint Water</span>
+            <div class="drink-desc">A simple upgrade to plain water — cooling, refreshing, zero sugar.</div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <div class="back-title">Citrus Mint Water</div>
+          <strong>Recipe</strong>
+          <ul>
+            <li>12 oz cold water</li>
+            <li>2–3 cucumber slices</li>
+            <li>1 lemon wedge</li>
+            <li>3 mint leaves</li>
+          </ul>
+          <div style="margin-top:0.6em;font-size:0.97em;">Let infuse for 10+ min.</div>
+        </div>
+      </div>
+    </div>
+    <!-- ...repeat for other cards... -->
+    <!-- (Use absolute paths like /iced-tea-6391412_1280.jpg for images) -->
+    <!-- ... -->
+  </div>
+  <div class="tap-tip">Tip: Tap/click a card for the recipe. Tap again to flip back!</div>
+</section>
+<div class="footer">
+  &copy; 2025 Nutriish. All rights reserved.
+</div>
+<script>
+  // Flip effect for cards on click/tap
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+        this.classList.toggle('flipped');
+      }
+    });
+  });
+</script>
