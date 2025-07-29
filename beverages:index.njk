@@ -10,13 +10,6 @@ og_image: /images/Nutriish_logo.png
 permalink: /beverages/
 ---
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/beverages/" style="font-weight: bold;">Beverage Guide</a>
-  <a href="/pricing/">Pricing</a>
-  <a href="/news/">News</a>
-</nav>
-
 <h1>Drink Better Guide</h1>
 <section class="container">
   <h2 style="text-align:center; font-size:1.7rem; margin-bottom: 0.7rem;">Healthy & Tasty Drinks</h2>
@@ -161,6 +154,81 @@ permalink: /beverages/
   </div>
   <div class="tap-tip">Tip: Tap/click a card for the recipe. Tap again to flip back!</div>
 </section>
+
+<style>
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2.2rem;
+}
+.flip-card {
+  background: transparent;
+  width: 230px;
+  height: 320px;
+  perspective: 1100px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(.6,.2,.2,1.1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(80,160,110,0.08);
+  background: #fff;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.1rem 0.8rem;
+}
+.flip-card-front img {
+  max-width: 120px;
+  max-height: 105px;
+  border-radius: 11px;
+  margin-bottom: 0.7rem;
+}
+.card-content { margin-top: 0.2rem; }
+.drink-title { font-size: 1.12rem; font-weight: bold; color: #31917b; }
+.drink-icon { font-size: 1.25rem; vertical-align: middle; }
+.drink-desc { font-size: 0.97rem; color: #444; margin-top: 0.18rem; }
+.flip-card-back {
+  transform: rotateY(180deg);
+  text-align: left;
+  background: #e6f4ee;
+}
+.back-title { font-size: 1.13rem; font-weight: bold; margin-bottom: 0.4rem; color: #31917b; }
+.tap-tip {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1.7rem;
+  color: #208200;
+}
+@media (max-width: 900px) {
+  .grid { flex-direction: column; gap: 1rem; align-items: center;}
+  .flip-card { width: 93vw; max-width: 330px;}
+}
+/* Extra mobile coziness for very small screens */
+@media (max-width: 600px) {
+  .flip-card { min-width: 210px; width: 98vw; max-width: 99vw; }
+  .flip-card-front img { max-width: 90px; max-height: 70px; }
+  .drink-title, .back-title { font-size: 1.01rem; }
+  .drink-desc, .tap-tip { font-size: 0.93rem; }
+  .flip-card-front, .flip-card-back { padding: 0.7rem 0.3rem; }
+}
+</style>
 
 {% block scripts %}
 <script>
