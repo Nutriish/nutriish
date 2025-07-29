@@ -98,23 +98,41 @@ body {
     font-size: 1em;
     margin-top: 0.25em;
   }
-  
   /* ==== BEVERAGES FLIP CARDS ==== */
   .grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem 2.2rem;
     justify-content: center;
     margin-top: 2.2rem;
+    align-items: start;
+    max-width: 590px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      max-width: 98vw;
+    }
   }
   .flip-card {
     background: transparent;
-    width: 270px;
-    height: 340px;
+    width: 260px;
+    height: 260px;
     perspective: 1200px;
     cursor: pointer;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     transition: box-shadow 0.18s;
+  }
+  @media (max-width: 700px) {
+    .flip-card {
+      width: 96vw;
+      max-width: 330px;
+      height: 96vw;
+      max-height: 330px;
+    }
   }
   .flip-card-inner {
     position: relative;
@@ -130,46 +148,63 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 18px;
-    box-shadow: 0 5px 28px rgba(80,160,110,0.12);
+    border-radius: 16px;
+    box-shadow: 0 5px 22px rgba(80,160,110,0.13);
     background: #fff;
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem;
+    align-items: stretch;
+    padding: 0;
     justify-content: flex-start;
+    overflow: hidden;
   }
   .flip-card-front img {
-    max-width: 155px;
-    max-height: 135px;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    margin-top: 0.3rem;
-    box-shadow: 0 2px 10px rgba(80,160,110,0.13);
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+    display: block;
   }
-  .card-content { margin-top: 0.25rem; }
-  .drink-title { font-size: 1.21rem; font-weight: bold; color: #31917b; }
-  .drink-icon { font-size: 1.33rem; vertical-align: middle; }
-  .drink-desc { font-size: 1.01rem; color: #444; margin-top: 0.2rem; }
+  .card-content {
+    padding: 0.7rem 1rem 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    justify-content: center;
+  }
+  .drink-title {
+    font-size: 1.18rem;
+    font-weight: bold;
+    color: #31917b;
+    display: flex;
+    align-items: center;
+  }
+  .drink-icon { font-size: 1.27rem; margin-right: 0.27em; }
+  .drink-desc { font-size: 1.01rem; color: #444; margin-top: 0.18rem; }
   .flip-card-back {
     transform: rotateY(180deg);
     text-align: left;
     background: #e6f4ee;
-    padding-top: 1.5rem;
+    padding: 1.2em 1em;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
-  .back-title { font-size: 1.16rem; font-weight: bold; margin-bottom: 0.4rem; color: #31917b; }
+  .back-title {
+    font-size: 1.13rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    color: #31917b;
+  }
   .tap-tip {
     text-align: center;
     font-size: 1rem;
     margin-top: 1.7rem;
     color: #208200;
   }
-  @media (max-width: 900px) {
-    .grid { flex-direction: column; gap: 1rem; align-items: center;}
-    .flip-card { width: 93vw; max-width: 340px;}
-  }
-  
+    
   /* ==== PRICING PLANS ==== */
   .pricing-row {
     display: flex;
