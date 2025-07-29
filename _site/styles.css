@@ -1,4 +1,4 @@
-/* --- Global Styles --- */
+/* ==== GLOBAL ==== */
 body {
     font-family: 'Inter', Arial, sans-serif;
     background: #fafcfb;
@@ -9,7 +9,7 @@ body {
   .header-img-wrap {
     width: 100vw;
     height: 180px;
-    background: url('/images/image_background.jpg') center/cover no-repeat;
+    background: url('/images/image_background.webp') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -23,9 +23,6 @@ body {
     z-index: 2;
     max-width: 110px;
     max-height: 110px;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
   }
   nav {
     width: 100%;
@@ -67,10 +64,17 @@ body {
     margin-top: 2.5rem;
     width: 100vw;
   }
-  /* WhatsApp floating button */
+  @media (max-width: 1000px) {
+    .container { padding: 1.2rem 0.2rem 0.2rem 0.2rem;}
+    h1 { font-size: 1.4rem; }
+    .header-img-wrap { height: 110px;}
+    .logo-centered { max-width: 70px; max-height: 70px;}
+  }
+  
+  /* ==== WHATSAPP FLOAT ==== */
   .wa-float-container {
     position: fixed;
-    left: 0.6em;
+    right: 0.6em;
     bottom: 1.6em;
     z-index: 99;
     display: flex;
@@ -94,15 +98,114 @@ body {
     font-size: 1em;
     margin-top: 0.25em;
   }
-  /* Responsive adjustments */
-  @media (max-width: 1000px) {
-    .container { padding: 1.2rem 0.2rem 0.2rem 0.2rem;}
-    h1 { font-size: 1.4rem; }
-    .header-img-wrap { height: 110px;}
-    .logo-centered { max-width: 70px; max-height: 70px;}
+  /* ==== BEVERAGES FLIP CARDS ==== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem 2.2rem;
+    justify-content: center;
+    margin-top: 2.2rem;
+    align-items: start;
+    max-width: 590px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  /* --- Pricing Page Styles --- */
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      max-width: 98vw;
+    }
+  }
+  .flip-card {
+    background: transparent;
+    width: 260px;
+    height: 260px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: box-shadow 0.18s;
+  }
+  @media (max-width: 700px) {
+    .flip-card {
+      width: 96vw;
+      max-width: 330px;
+      height: 96vw;
+      max-height: 330px;
+    }
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(.6,.2,.2,1.1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 5px 22px rgba(80,160,110,0.13);
+    background: #fff;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .flip-card-front img {
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+    display: block;
+  }
+  .card-content {
+    padding: 0.7rem 1rem 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    justify-content: center;
+  }
+  .drink-title {
+    font-size: 1.18rem;
+    font-weight: bold;
+    color: #31917b;
+    display: flex;
+    align-items: center;
+  }
+  .drink-icon { font-size: 1.27rem; margin-right: 0.27em; }
+  .drink-desc { font-size: 1.01rem; color: #444; margin-top: 0.18rem; }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    text-align: left;
+    background: #e6f4ee;
+    padding: 1.2em 1em;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .back-title {
+    font-size: 1.13rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    color: #31917b;
+  }
+  .tap-tip {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1.7rem;
+    color: #208200;
+  }
+    
+  /* ==== PRICING PLANS ==== */
   .pricing-row {
     display: flex;
     flex-wrap: wrap;
@@ -113,8 +216,8 @@ body {
   .plan-card {
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 3px 18px rgba(0,0,0,0.06);
-    max-width: 310px;
+    box-shadow: 0 3px 18px rgba(0,0,0,0.09);
+    max-width: 320px;
     flex: 1 1 290px;
     padding: 2.2rem 1.2rem 1.4rem 1.2rem;
     margin: 0 0.5rem 2rem 0.5rem;
@@ -124,13 +227,13 @@ body {
     position: relative;
   }
   .plan-title {
-    font-size: 1.21rem;
+    font-size: 1.23rem;
     font-weight: bold;
     color: #208200;
     margin-bottom: 0.15rem;
   }
   .plan-price {
-    font-size: 2.15rem;
+    font-size: 2.23rem;
     font-weight: 600;
     color: #31917b;
     margin-bottom: 0.4rem;
@@ -139,7 +242,7 @@ body {
     color: #555;
     margin-bottom: 1.15rem;
     text-align: center;
-    font-size: 1.01rem;
+    font-size: 1.03rem;
   }
   .plan-features {
     list-style: none;
@@ -195,79 +298,42 @@ body {
     }
   }
   
-  /* --- Beverages Page Styles --- */
-  .grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2.2rem;
-  }
-  .flip-card {
-    background: transparent;
-    width: 230px;
-    height: 320px;
-    perspective: 1100px;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-  }
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.45s cubic-bezier(.6,.2,.2,1.1);
-    transform-style: preserve-3d;
-  }
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(80,160,110,0.08);
-    background: #fff;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.1rem 0.8rem;
-  }
-  .flip-card-front img {
-    max-width: 120px;
-    max-height: 105px;
-    border-radius: 11px;
-    margin-bottom: 0.7rem;
-  }
-  .card-content { margin-top: 0.2rem; }
-  .drink-title { font-size: 1.12rem; font-weight: bold; color: #31917b; }
-  .drink-icon { font-size: 1.25rem; vertical-align: middle; }
-  .drink-desc { font-size: 0.97rem; color: #444; margin-top: 0.18rem; }
-  .flip-card-back {
-    transform: rotateY(180deg);
-    text-align: left;
-    background: #e6f4ee;
-  }
-  .back-title { font-size: 1.13rem; font-weight: bold; margin-bottom: 0.4rem; color: #31917b; }
-  .tap-tip {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 1.7rem;
+  /* ==== HOMEPAGE SPECIAL ==== */
+  .subheadline {
+    font-size: 1.13rem;
     color: #208200;
+    margin-bottom: 0.5em;
+    font-weight: 500;
   }
-  @media (max-width: 900px) {
-    .grid { flex-direction: column; gap: 1rem; align-items: center;}
-    .flip-card { width: 93vw; max-width: 330px;}
+  .desc {
+    font-size: 1.03rem;
+    margin-bottom: 1.7em;
+    color: #444;
   }
-  
-  /* --- News Page Styles --- */
-  .news-list { max-width: 700px; margin: 0 auto; }
-  .news-archive { list-style: none; padding: 0; }
-  .news-item { margin-bottom: 2.1em; }
-  .news-title { font-size: 1.25em; font-weight: bold; color: #31917b; }
-  .news-meta { font-size: 0.95em; color: #676767; margin: 0.2em 0 0.8em 0;}
-  .news-excerpt { color: #333; }
-  .news-item a { text-decoration: none; }
-  .news-item a:hover .news-title { text-decoration: underline; }
+  .cta {
+    display: inline-block;
+    padding: 0.9em 1.7em;
+    background: #31917b;
+    color: #fff !important;
+    border-radius: 9px;
+    font-size: 1.11rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 1.3em 0 0.6em 0;
+    transition: background 0.15s;
+  }
+  .cta:hover { background: #208200; }
+  .bonus-row {
+    margin: 2em 0 1em 0;
+  }
+  .bonus-link {
+    margin-left: 0.6em;
+    color: #31917b;
+    font-size: 1.07rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px dotted #31917b;
+  }
+  .bonus-link:hover { color: #208200; border-bottom: 2px solid #208200;}
+  .emoji { font-size: 1.19em; vertical-align: middle; }
   
