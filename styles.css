@@ -1,4 +1,4 @@
-/* --- GLOBAL STYLES --- */
+/* ==== GLOBAL ==== */
 body {
     font-family: 'Inter', Arial, sans-serif;
     background: #fafcfb;
@@ -28,6 +28,7 @@ body {
     width: 100%;
     padding: 1rem 0 0.5rem 0;
     text-align: center;
+    background: none;
   }
   nav a {
     color: #31917b;
@@ -37,7 +38,8 @@ body {
     font-size: 1.08rem;
     transition: color 0.18s;
   }
-  nav a:hover, nav a[style*="font-weight:bold"] {
+  nav a:hover,
+  nav a[style*="font-weight:bold"] {
     color: #1b6254;
     text-decoration: underline;
   }
@@ -53,11 +55,6 @@ body {
     margin: 2rem 0 1.2rem 0;
     letter-spacing: -0.03em;
   }
-  h2 {
-    font-size: 1.7rem;
-    font-weight: bold;
-    margin-bottom: 0.7rem;
-  }
   .footer {
     text-align: center;
     padding: 1.3rem 0 1rem 0;
@@ -67,7 +64,14 @@ body {
     margin-top: 2.5rem;
     width: 100vw;
   }
-  /* WhatsApp Floating Button */
+  @media (max-width: 1000px) {
+    .container { padding: 1.2rem 0.2rem 0.2rem 0.2rem;}
+    h1 { font-size: 1.4rem; }
+    .header-img-wrap { height: 110px;}
+    .logo-centered { max-width: 70px; max-height: 70px;}
+  }
+  
+  /* ==== WHATSAPP FLOAT ==== */
   .wa-float-container {
     position: fixed;
     left: 0.6em;
@@ -94,15 +98,8 @@ body {
     font-size: 1em;
     margin-top: 0.25em;
   }
-  /* Responsive */
-  @media (max-width: 1000px) {
-    .container { padding: 1.2rem 0.2rem 0.2rem 0.2rem;}
-    h1 { font-size: 1.4rem; }
-    .header-img-wrap { height: 110px;}
-    .logo-centered { max-width: 70px; max-height: 70px;}
-  }
   
-  /* --- BEVERAGE FLIP CARDS --- */
+  /* ==== BEVERAGES FLIP CARDS ==== */
   .grid {
     display: flex;
     flex-wrap: wrap;
@@ -112,11 +109,12 @@ body {
   }
   .flip-card {
     background: transparent;
-    width: 230px;
-    height: 320px;
-    perspective: 1100px;
+    width: 270px;
+    height: 340px;
+    perspective: 1200px;
     cursor: pointer;
     margin-bottom: 1.5rem;
+    transition: box-shadow 0.18s;
   }
   .flip-card-inner {
     position: relative;
@@ -132,31 +130,35 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(80,160,110,0.08);
+    border-radius: 18px;
+    box-shadow: 0 5px 28px rgba(80,160,110,0.12);
     background: #fff;
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.1rem 0.8rem;
+    padding: 1.5rem 1rem;
+    justify-content: flex-start;
   }
   .flip-card-front img {
-    max-width: 120px;
-    max-height: 105px;
-    border-radius: 11px;
-    margin-bottom: 0.7rem;
+    max-width: 155px;
+    max-height: 135px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    margin-top: 0.3rem;
+    box-shadow: 0 2px 10px rgba(80,160,110,0.13);
   }
-  .card-content { margin-top: 0.2rem; }
-  .drink-title { font-size: 1.12rem; font-weight: bold; color: #31917b; }
-  .drink-icon { font-size: 1.25rem; vertical-align: middle; }
-  .drink-desc { font-size: 0.97rem; color: #444; margin-top: 0.18rem; }
+  .card-content { margin-top: 0.25rem; }
+  .drink-title { font-size: 1.21rem; font-weight: bold; color: #31917b; }
+  .drink-icon { font-size: 1.33rem; vertical-align: middle; }
+  .drink-desc { font-size: 1.01rem; color: #444; margin-top: 0.2rem; }
   .flip-card-back {
     transform: rotateY(180deg);
     text-align: left;
     background: #e6f4ee;
+    padding-top: 1.5rem;
   }
-  .back-title { font-size: 1.13rem; font-weight: bold; margin-bottom: 0.4rem; color: #31917b; }
+  .back-title { font-size: 1.16rem; font-weight: bold; margin-bottom: 0.4rem; color: #31917b; }
   .tap-tip {
     text-align: center;
     font-size: 1rem;
@@ -165,9 +167,10 @@ body {
   }
   @media (max-width: 900px) {
     .grid { flex-direction: column; gap: 1rem; align-items: center;}
-    .flip-card { width: 93vw; max-width: 330px;}
+    .flip-card { width: 93vw; max-width: 340px;}
   }
-  /* --- PRICING PAGE --- */
+  
+  /* ==== PRICING PLANS ==== */
   .pricing-row {
     display: flex;
     flex-wrap: wrap;
@@ -178,8 +181,8 @@ body {
   .plan-card {
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 3px 18px rgba(0,0,0,0.06);
-    max-width: 310px;
+    box-shadow: 0 3px 18px rgba(0,0,0,0.09);
+    max-width: 320px;
     flex: 1 1 290px;
     padding: 2.2rem 1.2rem 1.4rem 1.2rem;
     margin: 0 0.5rem 2rem 0.5rem;
@@ -189,13 +192,13 @@ body {
     position: relative;
   }
   .plan-title {
-    font-size: 1.21rem;
+    font-size: 1.23rem;
     font-weight: bold;
     color: #208200;
     margin-bottom: 0.15rem;
   }
   .plan-price {
-    font-size: 2.15rem;
+    font-size: 2.23rem;
     font-weight: 600;
     color: #31917b;
     margin-bottom: 0.4rem;
@@ -204,7 +207,7 @@ body {
     color: #555;
     margin-bottom: 1.15rem;
     text-align: center;
-    font-size: 1.01rem;
+    font-size: 1.03rem;
   }
   .plan-features {
     list-style: none;
@@ -259,4 +262,43 @@ body {
       gap: 1.6rem;
     }
   }
+  
+  /* ==== HOMEPAGE SPECIAL ==== */
+  .subheadline {
+    font-size: 1.13rem;
+    color: #208200;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  .desc {
+    font-size: 1.03rem;
+    margin-bottom: 1.7em;
+    color: #444;
+  }
+  .cta {
+    display: inline-block;
+    padding: 0.9em 1.7em;
+    background: #31917b;
+    color: #fff !important;
+    border-radius: 9px;
+    font-size: 1.11rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 1.3em 0 0.6em 0;
+    transition: background 0.15s;
+  }
+  .cta:hover { background: #208200; }
+  .bonus-row {
+    margin: 2em 0 1em 0;
+  }
+  .bonus-link {
+    margin-left: 0.6em;
+    color: #31917b;
+    font-size: 1.07rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px dotted #31917b;
+  }
+  .bonus-link:hover { color: #208200; border-bottom: 2px solid #208200;}
+  .emoji { font-size: 1.19em; vertical-align: middle; }
   
