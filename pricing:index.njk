@@ -55,3 +55,96 @@ permalink: /pricing/
     </div>
   </div>
 </div>
+<!-- End of pricing content above -->
+<style>
+.pricing-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+.plan-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.06);
+  max-width: 310px;
+  flex: 1 1 290px;
+  padding: 2.2rem 1.2rem 1.4rem 1.2rem;
+  margin: 0 0.5rem 2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plan-title {
+  font-size: 1.21rem;
+  font-weight: bold;
+  color: #208200;
+  margin-bottom: 0.15rem;
+}
+.plan-price {
+  font-size: 2.15rem;
+  font-weight: 600;
+  color: #31917b;
+  margin-bottom: 0.4rem;
+}
+.plan-desc {
+  color: #555;
+  margin-bottom: 1.15rem;
+  text-align: center;
+  font-size: 1.01rem;
+}
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.15rem 0;
+}
+.plan-features li {
+  margin-bottom: 0.7em;
+  color: #3b3b3b;
+  font-size: 1.03rem;
+  text-align: left;
+}
+.plan-btn {
+  background: #31917b;
+  color: #fff;
+  padding: 0.8em 1.5em;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 1.1em;
+  transition: background 0.17s;
+  font-size: 1.09rem;
+  letter-spacing: 0.01em;
+}
+.plan-btn:hover {
+  background: #208200;
+}
+.most-popular {
+  border: 2.2px solid #208200;
+  position: relative;
+  z-index: 2;
+}
+.most-popular-badge {
+  position: absolute;
+  top: -1.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #31917b;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 7px;
+  padding: 0.25em 1.1em;
+  z-index: 3;
+  box-shadow: 0 2px 7px rgba(80,160,110,0.10);
+  letter-spacing: 0.01em;
+}
+@media (max-width: 1100px) {
+  .pricing-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+}
+</style>
