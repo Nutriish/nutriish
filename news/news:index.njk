@@ -1,0 +1,49 @@
+---
+layout: base.njk
+title: "Nutriish News & Articles"
+description: "Stay updated with the latest Nutriish news, launches, guides, and healthy eating tips."
+keywords: "news, Nutriish, launch, updates, healthy eating, articles"
+permalink: /news/
+---
+
+<h1>Nutriish News</h1>
+<section class="container">
+  <div class="news-list">
+    {% set posts = collections.news | reverse %}
+    {% if posts.length %}
+      <ul class="news-archive">
+        {% for post in posts %}
+          <li class="news-item">
+            <a href="{{ post.url | url }}">
+              <div class="news-title">{{ post.data.title }}</div>
+            </a>
+            <div class="news-meta">
+            <span class="news-date">
+              {{ post.date | date("d MMM yyyy") }}
+               </span>
+              <span class="news-reading">
+                • {{ post.templateContent | striptags | readingTime }}
+              </span>
+            </div>
+            <div class="news-excerpt">
+              {{ post.data.excerpt or (post.templateContent | striptags | truncate(120, true)) }}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No news articles yet. Check back soon!</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .news-list { max-width: 700px; margin: 0 auto; }
+  .news-archive { list-style: none; padding: 0; }
+  .news-item { margin-bottom: 2.1em; }
+  .news-title { font-size: 1.25em; font-weight: bold; color: #31917b; }
+  .news-meta { font-size: 0.95em; color: #676767; margin: 0.2em 0 0.8em 0;}
+  .news-excerpt { color: #333; }
+  .news-item a { text-decoration: none; }
+  .news-item a:hover .news-title { text-decoration: underline; }
+</style>

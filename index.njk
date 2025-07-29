@@ -1,246 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nutriish | Your Private Healthy Eating Concierge</title>
-  <!-- ...your meta tags here... -->
-  <link rel="icon" type="image/png" href="Nutriish_logo.png" />
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
-  <!-- Google Analytics ... -->
+---
+layout: base.njk
+title: Nutriish | Your Private Healthy Eating Concierge
+description: Official sponsor of family sharing moments. Real meal plans, tailored for busy lives. No diet boxes. Just better food, for families and professionals.
+keywords: meal plan, family nutrition, healthy eating, WhatsApp coaching, Nutriish
+author: Nutriish
+og_title: Nutriish | Your Private Healthy Eating Concierge
+og_description: Real meal plans, tailored for busy lives. No diet boxes. Just better food, for families and professionals.
+og_image: /images/Nutriish_logo.png
+permalink: /
+---
 
-  <style>
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      background: #fafcfb;
-      margin: 0;
-      padding: 0;
-      color: #222;
-    }
-    .header-img-wrap {
-      width: 100vw;
-      height: 180px;
-      background: url('image_background.jpg') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .logo-centered {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -60%);
-      z-index: 2;
-      max-width: 110px;
-      max-height: 110px;
-      background: none;
-      box-shadow: none;
-      border-radius: 0;
-    }
-    nav {
-      width: 100%;
-      padding: 1rem 0 0.5rem 0;
-      text-align: center;
-      background: none;
-    }
-    nav a {
-      color: #31917b;
-      margin: 0 18px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.08rem;
-      transition: color 0.18s;
-    }
-    nav a:hover {
-      color: #1b6254;
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2.5rem 1rem 0 1rem;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.6rem;
-      font-weight: bold;
-      margin: 2rem 0 1.25rem 0;
-      letter-spacing: -0.03em;
-    }
-    .subheadline {
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      color: #31917b;
-    }
-    .desc {
-      font-size: 1.18rem;
-      margin-bottom: 1.7rem;
-    }
-    .cta {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 1rem 2.5rem;
-      background: #83c785;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s;
-      box-shadow: 0 3px 12px rgba(130, 199, 133, 0.11);
-    }
-    .cta:hover {
-      background: #65a967;
-    }
-    .bonus-row {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-    }
-    .bonus-link {
-      display: flex;
-      align-items: center;
-      color: #208200;
-      font-weight: bold;
-      font-size: 1.1rem;
-      text-decoration: none;
-      margin-top: 0.05rem;
-      background: none;
-      border: none;
-      padding: 0;
-      transition: color 0.18s;
-    }
-    .bonus-link:hover {
-      color: #3b8c3b;
-      text-decoration: underline;
-    }
-    .footer {
-      text-align: center;
-      padding: 1.3rem 0 1rem 0;
-      background: #eee;
-      font-size: 1rem;
-      color: #555;
-      margin-top: 2.5rem;
-      width: 100vw;
-    }
+<div class="header-img-wrap">
+  <a href="/">
+    <img src="/images/Nutriish_logo.png" alt="Nutriish logo" class="logo-centered" />
+  </a>
+</div>
+<nav>
+  <a href="/" style="font-weight: bold;">Home</a>
+  <a href="/beverages/">Beverage Guide</a>
+  <a href="/pricing/">Pricing</a>
+  <a href="/news/">News</a>
+</nav>
 
-    /* WhatsApp floating button styles */
-    .wa-float-container {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 1002;
-    }
-    .wa-float-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #25D366;
-      border-radius: 50%;
-      width: 76px;
-      height: 76px;
-      box-shadow: 0 4px 16px rgba(39, 220, 102, 0.19);
-      transition: background 0.18s, box-shadow 0.18s;
-      text-decoration: none;
-      border: none;
-    }
-    .wa-float-btn:hover {
-      background: #1ebea5;
-      box-shadow: 0 6px 22px rgba(39, 220, 102, 0.27);
-    }
-    .wa-float-icon {
-      width: 44px;
-      height: 44px;
-      display: block;
-    }
-    .wa-float-text {
-      margin-top: 14px;
-      background: #25D366;
-      color: #fff;
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 500;
-      padding: 6px 22px;
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(39,220,102,0.10);
-      text-align: center;
-      white-space: nowrap;
-    }
-    @media (max-width: 600px) {
-      .wa-float-container {
-        bottom: 15px;
-        right: 10px;
-      }
-      .wa-float-btn {
-        width: 54px;
-        height: 54px;
-      }
-      .wa-float-icon {
-        width: 30px;
-        height: 30px;
-      }
-      .wa-float-text {
-        margin-top: 9px;
-        font-size: 0.98rem;
-        padding: 4px 12px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="header-img-wrap">
-    <a href="index.html" style="display:block;">
-      <img src="Nutriish_logo.png" alt="Nutriish logo" class="logo-centered" />
+<div class="container">
+  <h1>Nutriish</h1>
+  <div class="subheadline">
+    Your private healthy eating concierge.<br><br>
+    <span style="font-weight:400;">Official sponsor of family sharing moments.</span>
+  </div>
+  <div class="desc">
+    Real meal plans, tailored for busy lives.<br>
+    No diet boxes. Just better food, for families and professionals.
+  </div>
+  <a href="/pricing/" class="cta">Let's join the Nutriish family</a>
+  <div class="bonus-row">
+    <span style="font-size: 1.08rem;">Want to drink better too?</span>
+    <a href="/beverages/" class="bonus-link" target="_blank" rel="noopener">
+      <span class="emoji">🍹</span>Check our beverage guide
     </a>
   </div>
-  <nav>
-    <a href="index.html" style="font-weight: bold;">Home</a>
-    <a href="beverages.html">Beverage Guide</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="news.html">News</a>
-  </nav>
-  <div class="container">
-    <h1>Nutriish</h1>
-    <div class="subheadline">
-      Your private healthy eating concierge.<br><br>
-      <span style="font-weight:400;">Official sponsor of family sharing moments.</span>
-    </div>
-    <div class="desc">
-      Real meal plans, tailored for busy lives.<br>
-      No diet boxes. Just better food, for families and professionals.
-    </div>
-    <!-- Main CTA -->
-    <a href="pricing.html" class="cta">Let's join the Nutriish family</a>
-    <!-- Bonus Beverage Guide (not a CTA) -->
-    <div class="bonus-row">
-      <span style="font-size: 1.08rem;">Want to drink better too?</span>
-      <a href="beverages.html" class="bonus-link" target="_blank" rel="noopener">
-        <span class="emoji">🍹</span>Check our beverage guide
-      </a>
-    </div>
-  </div><!-- END .container -->
+</div><!-- END .container -->
 
-  <!-- WhatsApp Floating Button (place just before the footer) -->
-  <div class="wa-float-container">
-    <a href="https://wa.me/+34641012606" class="wa-float-btn" target="_blank" rel="noopener">
-      <svg class="wa-float-icon" xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 32 32">
-        <circle fill="#25D366" cx="16" cy="16" r="16"/>
-        <path fill="#fff" d="M23.5 8.6c-1.7-1.7-4-2.6-6.4-2.6-5 0-9 4.1-9 9.1 0 1.6.4 3.1 1.1 4.5L8 24.2l4.7-1.2c1.3.7 2.8 1.1 4.4 1.1h.1c5 0 9.1-4.1 9.1-9.1.1-2.4-.8-4.7-2.5-6.4zM17.2 22.6c-1.3 0-2.7-.4-3.8-1l-.3-.2-2.8.7.7-2.7-.2-.3c-.7-1.1-1.1-2.5-1.1-3.8 0-4.1 3.3-7.4 7.4-7.4 2 0 3.8.8 5.2 2.1 1.3 1.3 2.1 3.2 2.1 5.1 0 4.2-3.3 7.5-7.2 7.5zm4-5.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.2-.5.2-.1.3-.5.7-.6.8-.1.1-.2.2-.4.1-.2-.1-.9-.3-1.8-1.1-.7-.6-1.3-1.5-1.5-1.7-.2-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.2 0-.4-.1-.1-.4-1-0.6-1.4-.2-.5-.5-.5-.7-.5-.2 0-.4 0-.6.1-.2.1-.5.5-.5 1.1s.5 1.3 1.1 2c.5.7 1.7 2.2 4.1 3.2.6.3.9.5 1.3.4.3 0 .7-.3.8-.6.1-.3.1-.6.1-.7-.1-.1-.2-.1-.4-.2z"/>
-      </svg>
-    </a>
-    <div class="wa-float-text">Chat with us</div>
-  </div>
-
-  <div class="footer">
-    &copy; 2025 Nutriish. All rights reserved.
-  </div>
-</body>
-</html>
+<!-- WhatsApp Floating Button (place just before the footer) -->
+<div class="wa-float-container">
+  <a href="https://wa.me/+34641012606" class="wa-float-btn" target="_blank" rel="noopener">
+    <svg class="wa-float-icon" xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 32 32">
+      <circle fill="#25D366" cx="16" cy="16" r="16"/>
+      <path fill="#fff" d="M23.5 8.6c-1.7-1.7-4-2.6-6.4-2.6-5 0-9 4.1-9 9.1 0 1.6.4 3.1 1.1 4.5L8 24.2l4.7-1.2c1.3.7 2.8 1.1 4.4 1.1h.1c5 0 9.1-4.1 9.1-9.1.1-2.4-.8-4.7-2.5-6.4zM17.2 22.6c-1.3 0-2.7-.4-3.8-1l-.3-.2-2.8.7.7-2.7-.2-.3c-.7-1.1-1.1-2.5-1.1-3.8 0-4.1 3.3-7.4 7.4-7.4 2 0 3.8.8 5.2 2.1 1.3 1.3 2.1 3.2 2.1 5.1 0 4.2-3.3 7.5-7.2 7.5zm4-5.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.2-.5.2-.1.3-.5.7-.6.8-.1.1-.2.2-.4.1-.2-.1-.9-.3-1.8-1.1-.7-.6-1.3-1.5-1.5-1.7-.2-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.2 0-.4-.1-.1-.4-1-0.6-1.4-.2-.5-.5-.5-.7-.5-.2 0-.4 0-.6.1-.2.1-.5.5-.5 1.1s.5 1.3 1.1 2c.5.7 1.7 2.2 4.1 3.2.6.3.9.5 1.3.4.3 0 .7-.3.8-.6.1-.3.1-.6.1-.7-.1-.1-.2-.1-.4-.2z"/>
+    </svg>
+  </a>
+  <div class="wa-float-text">Chat with us</div>
+</div>

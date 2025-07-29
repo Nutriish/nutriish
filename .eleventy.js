@@ -1,15 +1,32 @@
+const { DateTime } = require("luxon");
+
+// Reading time filter
+const readingTime = (text) => {
+  if (!text) return '1 min read';
+  const wpm = 200;
+  const words = text.split(/\s+/g).length;
+  const minutes = Math.ceil(words / wpm);
+  return `${minutes} min read`;
+};
+
 module.exports = function(eleventyConfig) {
+  // Add readingTime filter for all templates
+  eleventyConfig.addFilter("readingTime", readingTime);
+
+  // Add date filter for Nunjucks (fixes your news error!)
+  eleventyConfig.addNunjucksFilter("date", function(dateObj, format = "MMMM d, yyyy") {
+    // Make sure to handle both JS Dates and ISO strings
+    let dt = dateObj instanceof Date ? dateObj : new Date(dateObj);
+    return DateTime.fromJSDate(dt, { zone: 'utc' }).toFormat(format);
+  });
+
+  // Passthrough copy for static assets
+  eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("Nutriish_logo.png");
-  eleventyConfig.addPassthroughCopy("image_background.jpg");
-  eleventyConfig.addPassthroughCopy("brooke-lark-t7wg7BJU2-s-unsplash.jpg");
-  eleventyConfig.addPassthroughCopy("coffee-7074304_1280.jpg");
-  eleventyConfig.addPassthroughCopy("iced-tea-6391412_1280.jpg");
-  eleventyConfig.addPassthroughCopy("lemon-2610759_1280.jpg");
-  eleventyConfig.addPassthroughCopy("lemonade-6668438_1280.jpg");
-  eleventyConfig.addPassthroughCopy("smoothie-ingredients-glasses.jpg");
-  eleventyConfig.addPassthroughCopy("*.jpg");
-  eleventyConfig.addPassthroughCopy("*.png");
   eleventyConfig.addPassthroughCopy("styles.css");
-  // Add more passthroughs if needed (images, css, etc)
+
+  // Optional: news collection
+  eleventyConfig.addCollection("news", function(collection) {
+    return collection.getFilteredByGlob("news/*.md");
+  });
 };
