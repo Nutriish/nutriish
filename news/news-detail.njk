@@ -1,0 +1,45 @@
+---
+layout: base.njk
+---
+
+<article class="news-article">
+  <div class="news-header">
+    {% if image %}
+      <img src="{{ image }}" alt="{{ title }}" class="news-cover">
+    {% endif %}
+    <h1 class="news-title">{{ title }}</h1>
+    <div class="news-meta">
+      {{ date | date("d MMM yyyy") }} • {{ content | readingTime }}
+    </div>
+  </div>
+  <div class="news-body">
+    {{ content | safe }}
+  </div>
+  <div class="news-actions">
+    <a class="news-btn" href="#" onclick="shareArticle(event)">Partager</a>
+    <button class="news-btn" onclick="likeArticle()">👍 Like <span id="like-count">0</span></button>
+    <a class="news-btn" href="/news/">← Retour aux news</a>
+  </div>
+</article>
+
+{% block scripts %}
+<script>
+function shareArticle(e) {
+  e.preventDefault();
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href
+    });
+  } else {
+    prompt("Copiez ce lien :", window.location.href);
+  }
+}
+
+function likeArticle() {
+  let el = document.getElementById('like-count');
+  let count = parseInt(el.textContent) || 0;
+  el.textContent = count + 1;
+}
+</script>
+{% endblock %}

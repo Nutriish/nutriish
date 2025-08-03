@@ -25,8 +25,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("styles.css");
 
-  // Optional: news collection
+  // News collection with default layout for each news article
   eleventyConfig.addCollection("news", function(collection) {
-    return collection.getFilteredByGlob("news/*.md");
+    return collection.getFilteredByGlob("news/*.md").map(item => {
+      item.data.layout = "news/news-detail.njk"; // force le layout détail pour chaque news
+      return item;
+    });
   });
 };
