@@ -1,8 +1,9 @@
 [
-    "https://www.hsph.harvard.edu/nutritionsource/feed/",
-    "https://www.cdc.gov/nutrition/rss/nutrition.rss",
-    "https://www.who.int/feeds/entity/news/fr/rss.xml",
-    "https://www.fao.org/newsroom/rss/news-fr.xml",
-    "https://www.nutrition.org.uk/rss.xml"
-  ]
-  
+  "https://www.sciencedaily.com/rss/health_medicine/nutrition.xml",
+  "https://news.harvard.edu/gazette/section/health-medicine/feed/",
+  "https://newsinhealth.nih.gov/rss",
+  "https://www.thehealthy.com/nutrition/feed/",
+  "https://www.hsph.harvard.edu/nutritionsource/feed/"
+  "scrape:eatrightpro"
+]
+

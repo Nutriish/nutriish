@@ -1,84 +1,106 @@
+// scripts/news-batch.mjs
 import fs from "fs";
-import path from "path";
 import Parser from "rss-parser";
 import slugify from "slugify";
-
-const __dirname = process.cwd();
-const newsDir = path.join(__dirname, "news");
-const feedsFile = path.join(__dirname, "feeds.json");
+import fetch from "node-fetch";
+import * as cheerio from "cheerio";
 
 const parser = new Parser();
-const MAX_ARTICLES = 5; // nombre max de posts par batch
+const feeds = JSON.parse(fs.readFileSync(new URL("./feeds.json", import.meta.url)));
 
-// Cache des articles déjà publiés
-const cacheFile = path.join(newsDir, ".cache.json");
-let cache = new Set();
+const CACHE_FILE = new URL("./.cache.json", import.meta.url);
 
-if (fs.existsSync(cacheFile)) {
-  try {
-    const data = JSON.parse(fs.readFileSync(cacheFile, "utf-8"));
-    cache = new Set(data);
-  } catch (err) {
-    console.error("⚠️ Error reading cache, starting fresh.");
-  }
+// Charger le cache pour éviter les doublons
+let cache = { seenUrls: [] };
+if (fs.existsSync(CACHE_FILE)) {
+  cache = JSON.parse(fs.readFileSync(CACHE_FILE));
 }
 
-// Helper pour écrire un fichier .md
-function createMarkdownFile(article) {
-  const slug = slugify(article.title, { lower: true, strict: true }).slice(0, 60);
-  const date = new Date().toISOString().split("T")[0];
-  const filename = `${date}-${slug}.md`;
-  const filePath = path.join(newsDir, filename);
+// --- SCRAPER EatRightPro ---
+async function scrapeEatRightPro() {
+  console.log("🔎 Scraping EatRightPro...");
+  const res = await fetch("https://www.eatrightpro.org/news-center");
+  const html = await res.text();
+  const $ = cheerio.load(html);
 
-  const mdContent = `---
-layout: news/news-detail.njk
-title: "${article.title.replace(/"/g, "'")}"
-description: "${(article.contentSnippet || "").slice(0, 150)}"
-date: ${date}
-tags: news
----
+  let items = [];
+  $(".news-list-item").each((i, el) => {
+    const title = $(el).find("a").text().trim();
+    const link = "https://www.eatrightpro.org" + $(el).find("a").attr("href");
+    const snippet = $(el).find("p").text().trim();
+    items.push({
+      title,
+      link,
+      contentSnippet: snippet,
+      pubDate: new Date().toISOString()
+    });
+  });
 
-**Nutriish Summary:**  
-${article.contentSnippet || "No summary available."}
-
-🔗 [Read the full article here](${article.link})
-`;
-
-  fs.writeFileSync(filePath, mdContent, "utf-8");
-  console.log(`✅ Created: ${filename}`);
-  cache.add(article.link);
+  return items.slice(0, 5); // limiter à 5
 }
 
-async function run() {
-  if (!fs.existsSync(newsDir)) {
-    fs.mkdirSync(newsDir);
-  }
-
-  const feeds = JSON.parse(fs.readFileSync(feedsFile, "utf-8"));
+// --- Fonction principale ---
+async function main() {
   let articles = [];
 
-  for (const feedUrl of feeds) {
+  for (const feed of feeds) {
     try {
-      const feed = await parser.parseURL(feedUrl);
-      articles = articles.concat(feed.items.slice(0, 3));
+      if (feed.startsWith("SCRAPE:")) {
+        const source = feed.split(":")[1];
+        if (source === "EATRIGHTPRO") {
+          articles = articles.concat(await scrapeEatRightPro());
+        }
+      } else {
+        const parsedFeed = await parser.parseURL(feed);
+        articles = articles.concat(
+          parsedFeed.items.map(item => ({
+            title: item.title,
+            link: item.link,
+            pubDate: item.pubDate,
+            contentSnippet: item.contentSnippet || ""
+          }))
+        );
+      }
     } catch (err) {
-      console.error(`❌ Error parsing feed ${feedUrl}:`, err.message);
+      console.error(`❌ Error with feed ${feed}: ${err.message}`);
     }
   }
 
-  articles = articles
-    .filter(a => a.title && a.link && !cache.has(a.link)) // exclure doublons
-    .sort((a, b) => new Date(b.isoDate || b.pubDate) - new Date(a.isoDate || a.pubDate))
-    .slice(0, MAX_ARTICLES);
+  // Trier par date et filtrer les doublons
+  articles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  articles = articles.filter(a => !cache.seenUrls.includes(a.link));
 
-  if (articles.length === 0) {
-    console.log("ℹ️ No new articles to add.");
+  // Prendre les 5 plus récents
+  const selected = articles.slice(0, 5);
+
+  for (const article of selected) {
+    const slug = slugify(article.title, { lower: true, strict: true });
+    const date = new Date().toISOString().split("T")[0];
+
+    const md = `---
+title: "${article.title}"
+date: ${date}
+description: "${article.contentSnippet.replace(/"/g, "'")}"
+layout: news/news-detail.njk
+source: "${article.link}"
+---
+
+${article.contentSnippet}
+
+👉 [Read the full article here](${article.link})
+`;
+
+    const filePath = new URL(`../news/${date}-${slug}.md`, import.meta.url);
+    fs.writeFileSync(filePath, md, "utf-8");
+
+    // Ajouter au cache
+    cache.seenUrls.push(article.link);
   }
 
-  articles.forEach(article => createMarkdownFile(article));
+  // Sauvegarder le cache
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
 
-  // Mise à jour du cache
-  fs.writeFileSync(cacheFile, JSON.stringify([...cache]), "utf-8");
+  console.log(`✅ Added ${selected.length} new articles`);
 }
 
-run();
+main();
