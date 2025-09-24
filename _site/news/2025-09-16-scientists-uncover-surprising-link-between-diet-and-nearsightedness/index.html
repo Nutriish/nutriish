@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientists uncover surprising link between diet and nearsightedness</title>
+  <meta name="description" content="Researchers studying over 1,000 children found that omega-3 fatty acids may help protect against myopia, while saturated fats may increase risk. Kids with more omega-3 in their diet had healthier eye measurements linked to slower vision deterioration. In contrast, those with high saturated fat intake showed worse outcomes.">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta property="og:title" content="Scientists uncover surprising link between diet and nearsightedness">
+  <meta property="og:description" content="Researchers studying over 1,000 children found that omega-3 fatty acids may help protect against myopia, while saturated fats may increase risk. Kids with more omega-3 in their diet had healthier eye measurements linked to slower vision deterioration. In contrast, those with high saturated fat intake showed worse outcomes.">
+  <meta property="og:image" content="/images/Nutriish_logo.webp">
+  <meta property="og:type" content="website">
+  <link rel="preload" as="image" href="/images/image_background.jpg">
+  <link rel="icon" type="image/webp" href="/images/Nutriish_logo.webp">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  
+</head>
+<body>
+  <div class="header-img-wrap">
+    <a href="/" style="display:block;">
+      <img src="/images/Nutriish_logo.png" alt="Nutriish logo" class="logo-centered" />
+    </a>
+  </div>
+  <nav>
+    <a href="/" >Home</a>
+    <a href="/beverages/" >Beverage Guide</a>
+    <a href="/pricing/" >Pricing</a>
+    <a href="/news/" >News</a>
+  </nav>
+  <main>
+    
+<article class="news-article">
+  <div class="news-header">
+    
+    <h1 class="news-title">Scientists uncover surprising link between diet and nearsightedness</h1>
+    <div class="news-meta">
+      16 Sep 2025 • 1 min read
+    </div>
+  </div>
+  <div class="news-body">
+    <p>Researchers studying over 1,000 children found that omega-3 fatty acids may help protect against myopia, while saturated fats may increase risk. Kids with more omega-3 in their diet had healthier eye measurements linked to slower vision deterioration. In contrast, those with high saturated fat intake showed worse outcomes.</p>
+<p>👉 <a href="https://www.sciencedaily.com/releases/2025/09/250907172653.htm">Read the full article here</a></p>
+
+  </div>
+  <div class="news-actions">
+    <a class="news-btn" href="#" onclick="shareArticle(event)">Partager</a>
+    <button class="news-btn" onclick="likeArticle()">👍 Like <span id="like-count">0</span></button>
+    <a class="news-btn" href="/news/">← Retour aux news</a>
+  </div>
+</article>
+
+
+<script>
+function shareArticle(e) {
+  e.preventDefault();
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href
+    });
+  } else {
+    prompt("Copiez ce lien :", window.location.href);
+  }
+}
+
+function likeArticle() {
+  let el = document.getElementById('like-count');
+  let count = parseInt(el.textContent) || 0;
+  el.textContent = count + 1;
+}
+</script>
+
+
+  </main>
+  <div class="footer">
+    &copy; 2025 Nutriish. All rights reserved.
+  </div>
+  
+</body>
+</html>

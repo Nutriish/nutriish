@@ -2,18 +2,17 @@ name: Daily News Batch
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # tous les jours à 06:00 UTC
-  workflow_dispatch:       # permet de lancer manuellement aussi
+    - cron: "0 6 * * *" # every day at 6am UTC
+  workflow_dispatch: # allow manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -21,15 +20,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run news batch
-        run: node scripts/news-batch.mjs
+      - name: Run news batch script
+        id: newsbatch
+        run: |
+          echo "Running daily news batch..."
+          npm run news:batch | tee news.log
+          echo "----- SUMMARY -----"
+          grep "✅" news.log || echo "No new articles created"
+          echo "-------------------"
 
-      - name: Commit & Push generated news
-  run: |
-    git config --global user.name "Nutriish Bot"
-    git config --global user.email "bot@nutriish.me"
-    git add .
-    git commit -m "Add daily news batch" || echo "No changes to commit"
-    git push origin main || echo "No changes to push"
-
-
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Nutriish Bot"
+          git config --global user.email "bot@nutriish.me"
+          git add .
+          git commit -m "Add daily news batch" || echo "No changes to commit"
+          git push origin main || echo "No changes to push"
