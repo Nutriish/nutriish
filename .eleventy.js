@@ -24,6 +24,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("styles.css");
+  eleventyConfig.addPassthroughCopy("robots.txt");
 
   // News collection with default layout for each news article
   eleventyConfig.addCollection("news", function(collection) {
