@@ -7,9 +7,9 @@ permalink: "/news/{{ page.fileSlug }}/index.html"
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "{{ title }}",
-  "datePublished": "{{ date | date('yyyy-MM-dd') }}",
-  "dateModified": "{{ date | date('yyyy-MM-dd') }}",
+  "headline": "{{ title | safe }}",
+  "datePublished": "{{ date | date("yyyy-MM-dd") }}",
+  "dateModified": "{{ date | date("yyyy-MM-dd") }}",
   "publisher": {
     "@type": "Organization",
     "@id": "https://nutriish.me/#organization",
@@ -22,9 +22,7 @@ permalink: "/news/{{ page.fileSlug }}/index.html"
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://nutriish.me/news/{{ page.fileSlug }}/"
-  }{% if excerpt %},
-  "description": "{{ excerpt | replace('"', "'") }}"{% endif %}{% if source %},
-  "sameAs": "{{ source }}"{% endif %}
+  }
 }
 </script>
 
