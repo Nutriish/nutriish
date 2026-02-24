@@ -1,0 +1,17 @@
+{
+  "domain": "nutriish.me",
+  "generated_at": "2026-02-24T08:14:42+00:00",
+  "scans": [
+    {
+      "date": "2026-02-24",
+      "score": 57,
+      "has_jsonld": true,
+      "has_faq_schema": true,
+      "has_robots": true,
+      "word_count": 444,
+      "citations_found": 0,
+      "citations_checked": 0,
+      "note": "sitemap + about page"
+    }
+  ]
+}
