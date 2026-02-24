@@ -81,7 +81,7 @@ async function main() {
 title: "${article.title}"
 date: ${date}
 description: "${article.contentSnippet.replace(/"/g, "'")}"
-layout: news/news-detail.njk
+layout: post.njk
 source: "${article.link}"
 ---
 
