@@ -37,6 +37,8 @@
     <a href="/beverages/" {% if url and url.indexOf('/beverages/') != -1 %}style="font-weight:bold;"{% endif %}>Beverage Guide</a>
     <a href="/pricing/" {% if url and url.indexOf('/pricing/') != -1 %}style="font-weight:bold;"{% endif %}>Pricing</a>
     <a href="/news/" {% if url and url.indexOf('/news/') != -1 %}style="font-weight:bold;"{% endif %}>News</a>
+    <a href="/about/" {% if url and url.indexOf('/about/') != -1 %}style="font-weight:bold;"{% endif %}>About</a>
+    <a href="/faq/" {% if url and url.indexOf('/faq/') != -1 %}style="font-weight:bold;"{% endif %}>FAQ</a>
   </nav>
   <main>
     {{ content | safe }}
