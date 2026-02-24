@@ -1,0 +1,265 @@
+---
+layout: base.njk
+title: FAQ | Nutriish, Your Questions Answered
+description: Frequently asked questions about Nutriish, the private healthy eating concierge for families and professionals. Learn how our meal planning service works.
+permalink: /faq/
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Nutriish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutriish is a private healthy eating concierge that provides personalized meal plans for families and professionals. Unlike diet boxes or rigid programs, Nutriish tailors real food recommendations to your schedule, preferences, and family needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Nutriish work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutriish works through personalized WhatsApp coaching. After joining, you receive tailored meal plans, shopping guidance, and direct support from a nutrition concierge, all through a simple chat interface with no app required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is Nutriish for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutriish is designed for busy families and professionals who want to eat better without the hassle of complex diet programs or subscription meal boxes. If you want real, practical food guidance that fits your life, Nutriish is for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Nutriish a meal delivery service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Nutriish is not a meal delivery or diet box service. It is a concierge nutrition coaching service that provides personalized meal plans and guidance so you can shop and cook your own food with confidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Nutriish cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutriish offers several plans depending on your needs. Visit our pricing page to see the current options available for individuals, families, and professionals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to download an app to use Nutriish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No app required. Nutriish coaching is delivered entirely through WhatsApp, which you likely already have on your phone. Simply join and start chatting with your nutrition concierge."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="canonical" href="https://nutriish.me/faq/" />
+
+<style>
+  .faq-container {
+    max-width: 760px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    font-family: inherit;
+  }
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .faq-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+  }
+  .faq-header p {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    gap: 1rem;
+    transition: background 0.15s;
+  }
+  .faq-question:hover {
+    background: #f9fafb;
+  }
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #374151;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+  .faq-item.open .faq-icon {
+    background: #1a1a1a;
+    color: #fff;
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 1.5rem;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 1.5rem 1.5rem;
+  }
+  .faq-answer p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .faq-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  .faq-cta p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  .faq-cta a {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.15s;
+  }
+  .faq-cta a:hover { opacity: 0.85; }
+</style>
+
+<div class="faq-container">
+
+  <div class="faq-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about Nutriish, the private healthy eating concierge for families and professionals.</p>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is Nutriish?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Nutriish is a private healthy eating concierge that provides personalized meal plans for families and professionals. Unlike diet boxes or rigid programs, Nutriish tailors real food recommendations to your schedule, your preferences, and your family needs.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How does Nutriish work?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Nutriish works through personalized WhatsApp coaching. After joining, you receive tailored meal plans, shopping guidance, and direct support from a nutrition concierge, all through a simple chat interface with no app required.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Who is Nutriish for?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Nutriish is designed for busy families and professionals who want to eat better without the hassle of complex diet programs or subscription meal boxes. If you want real, practical food guidance that fits your life, Nutriish is for you.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is Nutriish a meal delivery service?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. Nutriish is not a meal delivery or diet box service. It is a concierge nutrition coaching service that provides personalized meal plans and guidance so you can shop and cook your own food with confidence.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How much does Nutriish cost?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Nutriish offers several plans depending on your needs. Visit our <a href="/pricing/" style="color:#1a1a1a;font-weight:600;">pricing page</a> to see the current options available for individuals, families, and professionals.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do I need to download an app to use Nutriish?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No app required. Nutriish coaching is delivered entirely through WhatsApp, which you likely already have on your phone. Simply join and start chatting with your nutrition concierge.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="faq-cta">
+    <p>Ready to eat better without the stress?</p>
+    <a href="/pricing/">Join the Nutriish family</a>
+  </div>
+
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>

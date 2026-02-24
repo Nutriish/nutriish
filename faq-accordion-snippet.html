@@ -1,0 +1,122 @@
+<!-- FAQ Accordion — à ajouter dans index.njk après .wa-float-container -->
+
+<style>
+  .faq-accordion {
+    max-width: 680px;
+    margin: 3rem auto 2rem;
+    padding: 0 1.5rem;
+  }
+  .faq-accordion-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #999;
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+  .faq-acc-item {
+    border-bottom: 1px solid #eee;
+  }
+  .faq-acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    gap: 1rem;
+  }
+  .faq-acc-btn:hover { color: #000; }
+  .faq-acc-icon {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #aaa;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .faq-acc-item.open .faq-acc-icon {
+    transform: rotate(45deg);
+    color: #1a1a1a;
+  }
+  .faq-acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-acc-item.open .faq-acc-body {
+    max-height: 200px;
+  }
+  .faq-acc-body p {
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.7;
+    padding-bottom: 1rem;
+    margin: 0;
+  }
+  .faq-acc-more {
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+  .faq-acc-more a {
+    font-size: 0.8rem;
+    color: #888;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+  }
+  .faq-acc-more a:hover { color: #333; border-color: #999; }
+</style>
+
+<div class="faq-accordion">
+  <div class="faq-accordion-title">Common Questions</div>
+
+  <div class="faq-acc-item">
+    <button class="faq-acc-btn" onclick="accToggle(this)">
+      What is Nutriish?
+      <span class="faq-acc-icon">+</span>
+    </button>
+    <div class="faq-acc-body">
+      <p>Nutriish is a private healthy eating concierge that provides personalized meal plans for families and professionals, tailored to your schedule and preferences with no diet boxes involved.</p>
+    </div>
+  </div>
+
+  <div class="faq-acc-item">
+    <button class="faq-acc-btn" onclick="accToggle(this)">
+      How does it work?
+      <span class="faq-acc-icon">+</span>
+    </button>
+    <div class="faq-acc-body">
+      <p>Everything happens on WhatsApp. After joining, your nutrition concierge sends you tailored meal plans, shopping guidance, and support directly in chat, no app required.</p>
+    </div>
+  </div>
+
+  <div class="faq-acc-item">
+    <button class="faq-acc-btn" onclick="accToggle(this)">
+      Is Nutriish a meal delivery service?
+      <span class="faq-acc-icon">+</span>
+    </button>
+    <div class="faq-acc-body">
+      <p>No. Nutriish is a coaching service, not a delivery or diet box service. You shop and cook your own food, with the guidance and plans provided by your concierge.</p>
+    </div>
+  </div>
+
+  <div class="faq-acc-more">
+    <a href="/faq/">See all questions →</a>
+  </div>
+</div>
+
+<script>
+  function accToggle(btn) {
+    const item = btn.closest('.faq-acc-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-acc-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
