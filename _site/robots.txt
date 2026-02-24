@@ -21,3 +21,4 @@ User-agent: Googlebot
 Allow: /
 
 Sitemap: https://nutriish.me/sitemap.xml
+Sitemap: https://nutriish.me/sitemap.xml
