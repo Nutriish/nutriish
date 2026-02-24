@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nutriish.me/</loc>
-    <lastmod>{{ page.date | date: "%Y-%m-%d" }}</lastmod>
+    <lastmod>{{ page.date | date("Y-m-d") }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -34,7 +34,7 @@ eleventyExcludeFromCollections: true
   {%- if post.url and post.url contains '/news/' and post.url != '/news/' %}
   <url>
     <loc>https://nutriish.me{{ post.url }}</loc>
-    <lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
+    <lastmod>{{ post.date | date("Y-m-d") }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
