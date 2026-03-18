@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title | escape }}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <meta name="keywords" content="{{ keywords | escape }}">
+  <meta name="author" content="{{ author | escape }}">
+  <meta property="og:title" content="{{ og_title or title }}">
+  <meta property="og:description" content="{{ og_description or description }}">
+  <meta property="og:image" content="{{ og_image or '/images/Nutriish_logo.png' }}">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/images/Nutriish_logo.png">
+  <link rel="alternate" hreflang="en" href="https://nutriish.me{{ page.url }}" />
+  <link rel="alternate" hreflang="x-default" href="https://nutriish.me{{ page.url }}" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  {% block head %}{% endblock %}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMML0XQM41"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EMML0XQM41');
+</script>
+<!-- End Google Analytics -->
+</head>
+<body>
+  <div class="header-img-wrap">
+    <a href="/" style="display:block;">
+      <img src="/images/Nutriish_logo.png" alt="Nutriish logo" class="logo-centered" />
+    </a>
+  </div>
+  <nav>
+    <a href="/" {% if url == '/' %}style="font-weight:bold;"{% endif %}>Home</a>
+    <a href="/beverages/" {% if url and url.indexOf('/beverages/') != -1 %}style="font-weight:bold;"{% endif %}>Beverage Guide</a>
+    <a href="/pricing/" {% if url and url.indexOf('/pricing/') != -1 %}style="font-weight:bold;"{% endif %}>Pricing</a>
+    <a href="/news/" {% if url and url.indexOf('/news/') != -1 %}style="font-weight:bold;"{% endif %}>News</a>
+    <a href="/about/" {% if url and url.indexOf('/about/') != -1 %}style="font-weight:bold;"{% endif %}>About</a>
+    <a href="/faq/" {% if url and url.indexOf('/faq/') != -1 %}style="font-weight:bold;"{% endif %}>FAQ</a>
+  </nav>
+  <main>
+    {{ content | safe }}
+  </main>
+  <div class="footer">
+    &copy; 2025 Nutriish. All rights reserved.
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
